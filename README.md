@@ -11,7 +11,8 @@ npm i live-server
 ```
 Copy the following functions to your neovim configuration file:
 
-```* to start live-server```
+---
+```to start live-server```
 ```lua
 function live_server()
 
@@ -23,7 +24,8 @@ function live_server()
   vim.api.nvim_echo({{message}}, true, {})
 end
 ```
-```* to stop live-server```
+---
+```to stop live-server```
 ```lua
 function stop_live_server()
   
@@ -37,6 +39,7 @@ end
 ```
 
 To use the functions you can call them from the neovim command line like this:
+
 ```:lua live-server()``` to start live-server.
 
 ```:lua stop_live_server()``` to stop live-server.
