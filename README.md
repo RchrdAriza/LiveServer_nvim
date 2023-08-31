@@ -2,8 +2,8 @@
 
 - nodejs/npm
 - live-server
-- [notify](https://github.com/rcarriga/nvim-notify) (opcional)
-- [which-key](https://github.com/folke/which-key.nvim) (opcional)
+- [notify](https://github.com/rcarriga/nvim-notify) (Required/Obligatorio)
+- [which-key](https://github.com/folke/which-key.nvim) (Opcional)
 
 Install live-server using ```npm``` with the following command:
 ```bash
@@ -15,13 +15,25 @@ Copy the following functions to your neovim configuration file:
 ```to start live-server```
 ```lua
 function live_server()
+  local function command_exists(command)
+    local handle = io.popen("command -v " .. command)
+    local result = handle:read("*a")
+    handle:close()
+    return result ~= ""
+  end
 
-  -- In case you have the notify plugin installed uncomment the following lines
-  -- local notify = require("notify")
-  -- notify("Starting live server...")
-  vim.cmd("silent !live-server . >/dev/null 2>&1 &")
-  local message = "Starting live server"
-  vim.api.nvim_echo({{message}}, true, {})
+  if command_exists("live-server") then
+
+     local notify = require("notify") 
+     notify("Starting live server...") 
+     vim.cmd("silent !live-server . >/dev/null 2>&1 &") 
+
+  else
+
+     local notify = require("notify") 
+     notify("Live-server is not installed", "error") 
+
+  end
 end
 ```
 ---
@@ -29,12 +41,9 @@ end
 ```lua
 function stop_live_server()
   
-  -- In case you have the notify plugin installed uncomment the following lines
-  -- local notify = require("notify")
-  -- notify("Stopping live server")
+  local notify = require("notify")
+  notify("Stopping live server")
   vim.cmd("silent !pkill -f live-server")
-  local message = "Stopping live server"
-  vim.api.nvim_echo({{message}}, true, {})
 end
 ```
 
