@@ -7,7 +7,7 @@
 
 Install live-server using ```npm``` with the following command:
 ```bash
-npm i live-server
+npm i -g live-server
 ```
 Copy the following functions to your neovim configuration file:
 
