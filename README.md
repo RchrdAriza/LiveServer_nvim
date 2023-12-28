@@ -66,6 +66,6 @@ require("which-key").register({
   },
 })
 ```
-You may also be interested in: [MarkdownLive](https://www.github.com/RchrdAlv/NvimOnMy_Way)
+You may also be interested in: [MarkdownLive](https://github.com/RchrdAriza/MarkdownLive_nvim)
 
 Alternatively you can use my neovim configuration, which already has this function and others. [here](https://www.github.com/RchrdAlv/NvimOnMy_Way)
